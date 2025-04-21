@@ -4,11 +4,8 @@ import express from 'express';
 console.log('Initializing Zenith E-commerce server...');
 
 const app = express();
-// Use environment variable for port or default to 3001
 const port = process.env.PORT ? Number.parseInt(process.env.PORT, 10) : 3001;
 
-// --- Middleware ---
-// Enable CORS - configure origins properly for production
 app.use(
   cors({
     origin: '*', // Allow all origins for now (adjust for production)
@@ -23,7 +20,7 @@ app.get('/', (req, res) => {
 
 // --- Start Server ---
 try {
-  const server = app.listen(port, () => {
+  app.listen(port, () => {
     console.log('✅ Server started successfully.');
   });
 } catch (error) {
@@ -37,3 +34,5 @@ process.on('SIGINT', () => {
   // Add any cleanup logic here (e.g., close database connections if needed)
   process.exit(0);
 });
+
+export default app;

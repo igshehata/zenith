@@ -14,7 +14,9 @@
     "lint:staged": "biome check --error-on-warnings --no-errors-on-unmatched --staged",
     "dev": "concurrently \"bun --watch src/server.ts\" \"docker-compose up -d\"",
     "prepare": "husky",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "test:watch": "bun test --watch"
   },
   "dependencies": {
     "bcrypt": "^5.1.1",
@@ -40,6 +42,7 @@
     "@types/node": "^22.14.1",
     "@types/pg": "^8.11.13",
     "@types/redis": "^4.0.11",
+    "@types/supertest": "^6.0.3",
     "bun-types": "^1.2.10",
     "commitizen": "^4.3.1",
     "commitlint": "^19.7.1",
@@ -47,6 +50,7 @@
     "cz-conventional-changelog": "^3.3.0",
     "drizzle-kit": "^0.31.0",
     "husky": "^9.1.7",
+    "supertest": "^7.1.0",
     "tsx": "^4.19.3",
     "typescript": "^5.8.3"
   }
