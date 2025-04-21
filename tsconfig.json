@@ -1,0 +1,49 @@
+{
+
+    "compilerOptions": {
+      /* Base Options: */
+      "lib": ["ESNext"],
+      "esModuleInterop": true,
+      "skipLibCheck": true,
+      "target": "es2022",
+      "allowJs": true,
+      "resolveJsonModule": true,
+      "moduleDetection": "force",
+      "isolatedModules": true,
+  
+      /* Strictness */
+      "strict": true,
+      "noUncheckedIndexedAccess": true,
+      "noImplicitOverride": true,
+  
+      /* If NOT transpiling code: */
+      // "moduleResolution": "Bundler",
+      // "module": "ESNext",
+      // "noEmit": true,
+  
+      /* If transpiling code: */
+      "module": "CommonJS", // Changed for Node.js compatibility with Express/tRPC
+      "outDir": "dist",
+      "sourceMap": true,
+  
+      /* Alias */
+      "baseUrl": ".",
+      "paths": {
+        "@/*": [
+          "src/*"
+        ]
+      },
+  
+      /* Bun */
+      "types": [
+        "bun-types" // add Bun global
+      ]
+    },
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "node_modules",
+      "dist"
+    ]
+  }
