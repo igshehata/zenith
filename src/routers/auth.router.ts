@@ -1,6 +1,6 @@
-import { z } from 'zod';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
+import { z } from 'zod';
 
 // Input validation schemas
 const registerSchema = z.object({
@@ -12,4 +12,3 @@ const loginSchema = z.object({
   email: z.string().email(),
   password: z.string(),
 });
-

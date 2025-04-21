@@ -1,49 +1,36 @@
 {
+  "extends": "@tsconfig/node22/tsconfig.json", // Or consider "@tsconfig/bun/tsconfig.json"
+  "compilerOptions": {
+    // outDir and rootDir removed as they are unused with noEmit: true
 
-    "compilerOptions": {
-      /* Base Options: */
-      "lib": ["ESNext"],
-      "esModuleInterop": true,
-      "skipLibCheck": true,
-      "target": "es2022",
-      "allowJs": true,
-      "resolveJsonModule": true,
-      "moduleDetection": "force",
-      "isolatedModules": true,
-  
-      /* Strictness */
-      "strict": true,
-      "noUncheckedIndexedAccess": true,
-      "noImplicitOverride": true,
-  
-      /* If NOT transpiling code: */
-      // "moduleResolution": "Bundler",
-      // "module": "ESNext",
-      // "noEmit": true,
-  
-      /* If transpiling code: */
-      "module": "CommonJS", // Changed for Node.js compatibility with Express/tRPC
-      "outDir": "dist",
-      "sourceMap": true,
-  
-      /* Alias */
-      "baseUrl": ".",
-      "paths": {
-        "@/*": [
-          "src/*"
-        ]
-      },
-  
-      /* Bun */
-      "types": [
-        "bun-types" // add Bun global
-      ]
-    },
-    "include": [
-      "src/**/*.ts"
-    ],
-    "exclude": [
-      "node_modules",
-      "dist"
-    ]
-  }
+    // --- Core Settings ---
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["bun-types"], // Keep for Bun support
+
+    // --- Type Checking & Interop ---
+    "noEmit": true, // Keep: Essential for using tsc only for type checking
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "allowJs": false, // Set to false if only using .ts files in src
+
+    // --- Module Handling ---
+    "moduleDetection": "force",
+    // jsx removed as it's irrelevant for a backend project
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
+
+    // --- Best Practices / Strictness ---
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedIndexedAccess": true,
+    "noUnusedLocals": false, // Keep or set to true if desired
+    "noUnusedParameters": false, // Keep or set to true if desired
+    "noPropertyAccessFromIndexSignature": false // Keep or set to true if desired
+  },
+  "include": ["src/**/*.ts"], // Ensure this points to your source files
+  "exclude": ["node_modules", "dist", "build.mjs"] // Exclude build outputs, dependencies etc.
+}
